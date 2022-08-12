@@ -1,0 +1,29 @@
+/* House robbery - max cost */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int rob(int i, vector<int>v, vector<int>&dp)
+{
+    //base case
+    if(i >= v.size())
+     return 0;
+    if(dp[i] != -1)
+     return dp[i];
+     
+    int chori = v[i] + rob(i+2, v, dp);
+    int nchori = rob(i+1, v, dp);
+    
+    return dp[i]=max(chori, nchori);
+}
+
+
+int main()
+{
+    std::vector<int>v={12, 11, 3, 5};
+    vector<int> dp (v.size(), -1);
+    
+    cout<<rob(0, v, dp);
+
+    return 0;
+}

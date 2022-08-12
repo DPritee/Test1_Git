@@ -1,0 +1,29 @@
+/* Generate valid parenthesis */
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(int o, int c, int n, vector<string>&res, string temp)
+{
+    if(c == n)
+     res.push_back(temp);
+    else
+    {
+        if(o < n)
+         solve(o+1, c, n, res, temp+'(');
+      
+        if(c < o)
+         solve(o, c+1, n, res, temp+')');
+    }
+}
+
+int main()
+{
+    string temp;
+    vector<string>res;
+    solve(0, 0, 3, res, temp);
+    
+    for(int i=0; i<res.size(); i++)
+     cout<<res[i]<<"\n";
+    
+    return 0;
+}
